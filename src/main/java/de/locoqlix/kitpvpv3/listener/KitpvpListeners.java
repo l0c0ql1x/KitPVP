@@ -2,9 +2,13 @@ package de.locoqlix.kitpvpv3.listener;
 
 import de.NeonnBukkit.CoinsAPI.API.CoinsAPI;
 import de.locoqlix.kitpvpv3.utils.Messages;
+import org.bukkit.Material;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
@@ -20,6 +24,7 @@ public class KitpvpListeners implements Listener {
         player.setLevel(2024);
         player.sendTitle("§lWillkommen bei", "§l§aKitPVP");
         event.setJoinMessage("§l§7[§2+§7] §r§l" + player.getName());
+        player.getInventory().clear();
     }
 
     @EventHandler
@@ -34,8 +39,8 @@ public class KitpvpListeners implements Listener {
         Player player = event.getEntity().getPlayer();
         event.getDrops().removeAll(event.getDrops());
         event.setNewLevel(2024);
-        event.setKeepInventory(true);
-        if (CoinsAPI.getCoins(player) >= 25) {
+        player.getInventory().clear();
+        if (CoinsAPI.getCoins(player) <= 25) {
             int coins = CoinsAPI.getCoins(player);
             CoinsAPI.removeCoins(player, coins);
             Messages.informPlayer(player, "§cDu hast §6" + coins + " coins §cverloren");
@@ -50,6 +55,7 @@ public class KitpvpListeners implements Listener {
             killer.setHealth(20);
             killer.setFoodLevel(20);
         }
+        event.setDeathMessage("§l§c" + event.getEntity().getKiller().getName() + " §r§7killed §l§c" + player.getName());
 
     }
 
@@ -74,6 +80,26 @@ public class KitpvpListeners implements Listener {
     @EventHandler
     public void pickupItem(PlayerPickupItemEvent event){
         event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onCancelFallDamage(EntityDamageEvent e) {
+        if(e.getEntity() instanceof Player) {
+            if(e.getCause() == EntityDamageEvent.DamageCause.FALL) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void clickEvent(PlayerInteractEvent event){
+        Player player = event.getPlayer();
+        if(event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+            if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
+                Fireball fire = player.getWorld().spawn(event.getPlayer().getLocation(), Fireball.class);
+                fire.setShooter(player);
+            }
+        }
     }
 
 }

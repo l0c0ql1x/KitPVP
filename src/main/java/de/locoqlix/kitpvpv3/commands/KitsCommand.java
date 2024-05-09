@@ -27,8 +27,11 @@ public class KitsCommand implements CommandExecutor {
         loadKits();
     }
 
+    CommandSender unisender;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        unisender = sender;
         // Check if player
         if (!(sender instanceof Player)) {
             Messages.info("Nur Spieler dürfen den Command ausführen!!");
@@ -50,56 +53,88 @@ public class KitsCommand implements CommandExecutor {
         ItemStack starter = new ItemStack(Material.IRON_SWORD);
         ItemMeta meta = starter.getItemMeta();
         meta.setDisplayName("§aStarter Kit");
-        meta.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.starter")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e0 Coins"));
+        }
         starter.setItemMeta(meta);
         gui.setItem(0, starter);
 
         ItemStack tank = new ItemStack(Material.IRON_BARS);
         ItemMeta meta1 = tank.getItemMeta();
         meta1.setDisplayName("§aTank");
-        meta1.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.tank")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e10000 Coins"));
+        }
         tank.setItemMeta(meta1);
         gui.setItem(1, tank);
 
         ItemStack poseidon = new ItemStack(Material.TRIDENT);
         ItemMeta meta2 = poseidon.getItemMeta();
         meta2.setDisplayName("§aPosidon");
-        meta2.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.poseidon")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e2500 Coins"));
+        }
         poseidon.setItemMeta(meta2);
         gui.setItem(2, poseidon);
 
         ItemStack archer = new ItemStack(Material.BOW);
         ItemMeta meta3 = archer.getItemMeta();
         meta3.setDisplayName("§aArcher");
-        meta3.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.archer")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e3500 Coins"));
+        }
         archer.setItemMeta(meta3);
         gui.setItem(3, archer);
 
         ItemStack witch = new ItemStack(Material.SUSPICIOUS_STEW);
         ItemMeta meta4 = witch.getItemMeta();
         meta4.setDisplayName("§aWitch");
-        meta4.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.witch")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e4500 Coins"));
+        }
         witch.setItemMeta(meta4);
         gui.setItem(4, witch);
 
         ItemStack fireman = new ItemStack(Material.CROSSBOW);
         ItemMeta meta5 = fireman.getItemMeta();
         meta5.setDisplayName("§aFireman");
-        meta5.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.fireman")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e7500 Coins"));
+        }
         fireman.setItemMeta(meta5);
         gui.setItem(5, fireman);
 
         ItemStack magier = new ItemStack(Material.ENCHANTED_BOOK);
         ItemMeta meta6 = magier.getItemMeta();
         meta6.setDisplayName("§aMagier");
-        meta6.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.magier")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e8000 Coins"));
+        }
         magier.setItemMeta(meta6);
         gui.setItem(6, magier);
 
         ItemStack engel = new ItemStack(Material.FEATHER);
         ItemMeta meta7 = engel.getItemMeta();
         meta7.setDisplayName("§aEngel");
-        meta7.setLore(Arrays.asList("Lore 1!","Lore 2!"));
+        if (unisender.hasPermission("kitpvp.engel")){
+            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+        }else {
+            meta.setLore(Arrays.asList("§4§lGesperrt", "§e20000 Coins"));
+        }
         engel.setItemMeta(meta7);
         gui.setItem(7, engel);
 

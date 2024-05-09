@@ -13,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
+import static de.locoqlix.kitpvpv3.Kits.*;
+
 public class InventoryClick implements Listener {
 
 
@@ -27,21 +29,21 @@ public class InventoryClick implements Listener {
             if (e.getCurrentItem() != null) {
                 // Check which kit is selected
                 if (e.getCurrentItem().getType() == Material.IRON_SWORD){
-                    KitCommand.starterkit(player);
+                    starterkit(player);
                 }else if (e.getCurrentItem().getType() == Material.IRON_BARS){
-                    KitCommand.tankkit(player);
+                    tankkit(player);
                 }else if (e.getCurrentItem().getType() == Material.TRIDENT){
-                    KitCommand.poseidonkit(player);
+                    poseidonkit(player);
                 }else if (e.getCurrentItem().getType() == Material.BOW){
-                    KitCommand.archerkit(player);
+                    archerkit(player);
                 }else if (e.getCurrentItem().getType() == Material.SUSPICIOUS_STEW){
-                    KitCommand.witchkit(player);
+                    witchkit(player);
                 }else if (e.getCurrentItem().getType() == Material.CROSSBOW){
-                    KitCommand.firemankit(player);
+                    firemankit(player);
                 }else if (e.getCurrentItem().getType() == Material.ENCHANTED_BOOK){
-                    KitCommand.magierkit(player);
+                    magierkit(player);
                 }else if (e.getCurrentItem().getType() == Material.FEATHER){
-                    KitCommand.engelkit(player);
+                    engelkit(player);
                 }
             }
         }
