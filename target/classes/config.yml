@@ -1,0 +1,6 @@
+consoleprefix: '[Test]'
+prefix: '&c&l[Test]'
+suffix: '&7 '
+
+
+debug: true

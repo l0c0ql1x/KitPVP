@@ -1,0 +1,7 @@
+name: KitPVPv3
+version: '${project.version}'
+main: de.locoqlix.kitpvpv3.KitPVP
+api-version: '1.20'
+commands:
+  kit:
+  kits:
