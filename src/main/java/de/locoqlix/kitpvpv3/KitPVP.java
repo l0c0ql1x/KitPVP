@@ -3,10 +3,13 @@ package de.locoqlix.kitpvpv3;
 import de.locoqlix.kitpvpv3.commands.CommandHandler;
 import de.locoqlix.kitpvpv3.listener.EventHandler;
 import de.locoqlix.kitpvpv3.utils.Messages;
+import net.luckperms.api.LuckPerms;
 import net.luckperms.api.node.Node;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -31,6 +34,12 @@ public final class KitPVP extends JavaPlugin {
         // Load modules
         new CommandHandler(this);
         new EventHandler(this);
+
+        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+        if (provider != null) {
+            LuckPerms api = provider.getProvider();
+
+        }
     }
 
     @Override

@@ -3,8 +3,6 @@ package de.locoqlix.kitpvpv3;
 import de.NeonnBukkit.CoinsAPI.API.CoinsAPI;
 import de.locoqlix.kitpvpv3.utils.Messages;
 import net.luckperms.api.LuckPerms;
-import net.luckperms.api.model.user.User;
-import net.luckperms.api.node.Node;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
