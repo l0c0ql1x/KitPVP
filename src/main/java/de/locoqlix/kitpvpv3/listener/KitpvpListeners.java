@@ -43,18 +43,19 @@ public class KitpvpListeners implements Listener {
         event.getDrops().removeAll(event.getDrops());
         event.setNewLevel(2024);
         player.getInventory().clear();
+        int coins = 25;
         if (CoinsAPI.getCoins(player) <= 25) {
-            int coins = CoinsAPI.getCoins(player);
+            coins = CoinsAPI.getCoins(player);
             CoinsAPI.removeCoins(player, coins);
             Messages.informPlayer(player, "§cDu hast §6" + coins + " coins §cverloren");
         } else {
-            CoinsAPI.removeCoins(player, 25);
-            Messages.informPlayer(player, "§cDu hast §625 coins §cverloren");
+            CoinsAPI.removeCoins(player, coins);
+            Messages.informPlayer(player, "§cDu hast §6" + coins + " coins §cverloren");
         }
-        if (event.getEntity().getKiller() instanceof Player) {
+        if (event.getEntity().getKiller() instanceof Player && !(event.getEntity().getKiller() == player)) {
             Player killer = event.getEntity().getKiller().getPlayer();
-            CoinsAPI.addCoins(killer, 25);
-            Messages.informPlayer(killer, "§aDu hast §625 coins §abekommen!!");
+            CoinsAPI.addCoins(killer, coins);
+            Messages.informPlayer(killer, "§aDu hast §6" + coins + " coins §abekommen!!");
             killer.setHealth(20);
             killer.setFoodLevel(20);
         }
@@ -106,6 +107,7 @@ public class KitpvpListeners implements Listener {
                 cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
                 if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
                     Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
+                    fire.setFireTicks(0);
                     fire.setShooter(player);
                 }
             }
