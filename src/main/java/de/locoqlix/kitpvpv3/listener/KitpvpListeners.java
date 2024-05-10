@@ -103,7 +103,7 @@ public class KitpvpListeners implements Listener {
                 long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                 Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime/1000 + " §r§cSekunden");
             }else {
-                cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (5 * 1000));
+                cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
                 if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
                     Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
                     fire.setShooter(player);
