@@ -24,13 +24,14 @@ public class KitsCommand implements CommandExecutor {
 
         gui = Bukkit.createInventory(null, inventorySize, "Kits");
 
-        loadKits();
+
     }
 
     CommandSender unisender;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
         unisender = sender;
         // Check if player
         if (!(sender instanceof Player)) {
@@ -41,6 +42,7 @@ public class KitsCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         // Show available kits
+        loadKits();
         player.openInventory(gui);
 
         Messages.debug(player.getName() + " hat den 'kits' command ausgeführt.");
@@ -65,9 +67,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta1 = tank.getItemMeta();
         meta1.setDisplayName("§aTank");
         if (unisender.hasPermission("kitpvp.tank")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta1.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e10000 Coins"));
+            meta1.setLore(Arrays.asList("§4§lGesperrt", "§e10000 Coins"));
         }
         tank.setItemMeta(meta1);
         gui.setItem(1, tank);
@@ -76,9 +78,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta2 = poseidon.getItemMeta();
         meta2.setDisplayName("§aPosidon");
         if (unisender.hasPermission("kitpvp.poseidon")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta2.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e2500 Coins"));
+            meta2.setLore(Arrays.asList("§4§lGesperrt", "§e2500 Coins"));
         }
         poseidon.setItemMeta(meta2);
         gui.setItem(2, poseidon);
@@ -87,9 +89,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta3 = archer.getItemMeta();
         meta3.setDisplayName("§aArcher");
         if (unisender.hasPermission("kitpvp.archer")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta3.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e3500 Coins"));
+            meta3.setLore(Arrays.asList("§4§lGesperrt", "§e3500 Coins"));
         }
         archer.setItemMeta(meta3);
         gui.setItem(3, archer);
@@ -98,9 +100,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta4 = witch.getItemMeta();
         meta4.setDisplayName("§aWitch");
         if (unisender.hasPermission("kitpvp.witch")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta4.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e4500 Coins"));
+            meta4.setLore(Arrays.asList("§4§lGesperrt", "§e4500 Coins"));
         }
         witch.setItemMeta(meta4);
         gui.setItem(4, witch);
@@ -109,9 +111,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta5 = fireman.getItemMeta();
         meta5.setDisplayName("§aFireman");
         if (unisender.hasPermission("kitpvp.fireman")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta5.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e7500 Coins"));
+            meta5.setLore(Arrays.asList("§4§lGesperrt", "§e7500 Coins"));
         }
         fireman.setItemMeta(meta5);
         gui.setItem(5, fireman);
@@ -120,9 +122,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta6 = magier.getItemMeta();
         meta6.setDisplayName("§aMagier");
         if (unisender.hasPermission("kitpvp.magier")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta6.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e8000 Coins"));
+            meta6.setLore(Arrays.asList("§4§lGesperrt", "§e8000 Coins"));
         }
         magier.setItemMeta(meta6);
         gui.setItem(6, magier);
@@ -131,9 +133,9 @@ public class KitsCommand implements CommandExecutor {
         ItemMeta meta7 = engel.getItemMeta();
         meta7.setDisplayName("§aEngel");
         if (unisender.hasPermission("kitpvp.engel")){
-            meta.setLore(Arrays.asList("§a§lGekauft", " "));
+            meta7.setLore(Arrays.asList("§a§lGekauft", " "));
         }else {
-            meta.setLore(Arrays.asList("§4§lGesperrt", "§e20000 Coins"));
+            meta7.setLore(Arrays.asList("§4§lGesperrt", "§e20000 Coins"));
         }
         engel.setItemMeta(meta7);
         gui.setItem(7, engel);

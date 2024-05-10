@@ -70,6 +70,14 @@
       </dependency>
 
       <dependency>
+          <groupId>de.NeonnBukkit.CoinsAPI</groupId>
+          <artifactId>API</artifactId>
+          <version>1.9.4</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/src/main/resources/CoinsAPI.jar</systemPath>
+      </dependency>
+
+      <dependency>
           <groupId>org.spigotmc</groupId>
           <artifactId>spigot-api</artifactId>
           <version>1.20.4-R0.1-SNAPSHOT</version>

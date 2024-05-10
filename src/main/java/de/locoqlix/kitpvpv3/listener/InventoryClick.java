@@ -27,7 +27,6 @@ public class InventoryClick implements Listener {
             Player player = (Player) e.getWhoClicked();
 
             if (e.getCurrentItem() != null) {
-                // Check which kit is selected
                 if (e.getCurrentItem().getType() == Material.IRON_SWORD){
                     starterkit(player);
                 }else if (e.getCurrentItem().getType() == Material.IRON_BARS){

@@ -1,19 +1,12 @@
 package de.locoqlix.kitpvpv3.commands;
 
-import de.NeonnBukkit.CoinsAPI.API.CoinsAPI;
 import de.locoqlix.kitpvpv3.KitPVP;
 import de.locoqlix.kitpvpv3.utils.Messages;
 import net.luckperms.api.LuckPerms;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionType;
 
 import static de.locoqlix.kitpvpv3.Kits.*;
 
@@ -54,6 +47,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Starter'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Starter' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
             Messages.debug("Der Kit 'Starter' wurde den Spieler '" + player.getName() + "' gegeben.");
             Messages.informPlayer(player, "§aDu hast den §l§6'Starter'§r§a kit bekommen.");
@@ -67,6 +61,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Tank'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Tank' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Tank' wurde den Spieler '" + player.getName() + "' gegeben.");
@@ -81,6 +76,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Poseidon'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Poseidon' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Poseidon' wurde den Spieler '" + player.getName() + "' gegeben.");
@@ -95,6 +91,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Archer'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Archer' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Archer' wurde den Spieler '" + player.getName() + "' gegeben.");
@@ -109,6 +106,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Witch'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Witch' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Witch' wurde den Spieler '" + player.getName() + "' gegeben.");
@@ -123,6 +121,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Fireman'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Fireman' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Fireman' wurde den Spieler '" + player.getName() + "' gegeben.");
@@ -137,6 +136,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Magier'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Magier' wurde den Spieler '" + player.getName() + "' nicht gegeben.");
+                return true;
             }
             Messages.debug("Der Kit 'Magier' wurde den Spieler '" + player.getName() + "' gegeben.");
             Messages.informPlayer(player, "§aDu hast den §l§6'Magier'§r§a kit bekommen.");
@@ -150,6 +150,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Engel'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Engel' wurde den Spieler '" + player.getName() + "' gegeben.");
+                return true;
             }
 
             Messages.debug("Der Kit 'Engel' wurde den Spieler '" + player.getName() + "' gegeben.");

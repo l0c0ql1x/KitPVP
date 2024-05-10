@@ -14,14 +14,18 @@ import org.bukkit.potion.PotionType;
 
 public class Kits {
 
-    static LuckPerms luckPerms;
-
     public static void starterkit(Player player){
         int cost = 0;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.starter");
+        if (!player.hasPermission("kitpvp.starter")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.starter");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         player.getInventory().addItem(new ItemStack(Material.IRON_SWORD));
@@ -35,10 +39,16 @@ public class Kits {
 
     public static void tankkit(Player player){
         int cost = 10000;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.tank");
+        if (!player.hasPermission("kitpvp.tank")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.tank");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         ItemStack wooden_sword = new ItemStack(Material.WOODEN_SWORD);
@@ -56,10 +66,16 @@ public class Kits {
 
     public static void poseidonkit(Player player){
         int cost = 2500;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.poseidon");
+        if (!player.hasPermission("kitpvp.poseidon")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.poseidon");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         ItemStack wooden_sword = new ItemStack(Material.WOODEN_SWORD);
@@ -79,10 +95,16 @@ public class Kits {
 
     public static void archerkit(Player player){
         int cost = 3500;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.archer");
+        if (!player.hasPermission("kitpvp.archer")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.archer");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         player.getInventory().addItem(new ItemStack(Material.IRON_SWORD));
@@ -110,10 +132,16 @@ public class Kits {
 
     public static void witchkit(Player player){
         int cost = 4500;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.witch");
+        if (!player.hasPermission("kitpvp.witch")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.witch");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         player.getInventory().addItem(new ItemStack(Material.STONE_SWORD));
@@ -142,10 +170,16 @@ public class Kits {
 
     public static void firemankit(Player player){
         int cost = 7500;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.fireman");
+        if (!player.hasPermission("kitpvp.fireman")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.fireman");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         player.getInventory().addItem(new ItemStack(Material.STONE_SWORD));
@@ -165,10 +199,16 @@ public class Kits {
 
     public static void magierkit(Player player){
         int cost = 8000;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.magier");
+        if (!player.hasPermission("kitpvp.magier")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.magier");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         ItemStack wooden_sword = new ItemStack(Material.WOODEN_SWORD);
@@ -199,10 +239,16 @@ public class Kits {
 
     public static void engelkit(Player player){
         int cost = 20000;
-        if (CoinsAPI.getCoins(player) >= cost) {
-            CoinsAPI.removeCoins(player, cost);
-            Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
-            KitPVP.addPermission(player.getUniqueId(), "kitpvp.engel");
+        if (!player.hasPermission("kitpvp.engel")) {
+            if (CoinsAPI.getCoins(player) >= cost) {
+                CoinsAPI.removeCoins(player, cost);
+                Messages.informPlayer(player, "§eDu hast das Kit gekauft!");
+                KitPVP.addPermission(player.getUniqueId(), "kitpvp.engel");
+            }else {
+                int needed = cost - CoinsAPI.getCoins(player);
+                Messages.informPlayer(player, "§cDir fehlen §e" + needed + " Coins");
+            }
+            return;
         }
         player.getInventory().clear();
         ItemStack golden_sword = new ItemStack(Material.GOLDEN_SWORD);

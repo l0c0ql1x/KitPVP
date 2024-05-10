@@ -12,9 +12,12 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class KitpvpListeners implements Listener {
 
-
+    private HashMap<UUID, Long> cooldown = new HashMap<UUID, Long>();
 
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event){
@@ -94,10 +97,17 @@ public class KitpvpListeners implements Listener {
     @EventHandler
     public void clickEvent(PlayerInteractEvent event){
         Player player = event.getPlayer();
-        if(event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
-            if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
-                Fireball fire = player.getWorld().spawn(event.getPlayer().getLocation(), Fireball.class);
-                fire.setShooter(player);
+        if(event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()){
+                event.setCancelled(true);
+                long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
+                Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime/1000 + " §r§cSekunden");
+            }else {
+                cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (5 * 1000));
+                if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
+                    Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
+                    fire.setShooter(player);
+                }
             }
         }
     }
