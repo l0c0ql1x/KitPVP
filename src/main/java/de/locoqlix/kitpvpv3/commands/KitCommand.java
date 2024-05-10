@@ -150,7 +150,7 @@ public class KitCommand implements CommandExecutor {
             }else {
                 Messages.informPlayer(player, "§cDu besitzt den §l§6'Engel'§r§c kit nicht.");
                 Messages.debug("Der Kit 'Engel' wurde den Spieler '" + player.getName() + "' gegeben.");
-                return true;Even
+                return true;
             }
 
             Messages.debug("Der Kit 'Engel' wurde den Spieler '" + player.getName() + "' gegeben.");
