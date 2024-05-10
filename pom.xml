@@ -68,7 +68,6 @@
           <version>5.4</version>
           <scope>provided</scope>
       </dependency>
-
       <dependency>
           <groupId>de.NeonnBukkit.CoinsAPI</groupId>
           <artifactId>API</artifactId>
