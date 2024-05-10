@@ -99,16 +99,18 @@ public class KitpvpListeners implements Listener {
     public void clickEvent(PlayerInteractEvent event){
         Player player = event.getPlayer();
         if(event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()){
-                event.setCancelled(true);
-                long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
-                Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime/1000 + " §r§cSekunden");
-            }else {
-                cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
-                if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
+            if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
+                if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()) {
+                    event.setCancelled(true);
+                    long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
+                    Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime / 1000 + " §r§cSekunden");
+                } else {
+                    cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
+
                     Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
                     fire.setFireTicks(0);
                     fire.setShooter(player);
+
                 }
             }
         }

@@ -229,8 +229,6 @@ public class Kits {
         player.getInventory().setLeggings(leatherLeggings);
         player.getInventory().setBoots(new ItemStack(Material.IRON_BOOTS));
         player.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
-        player.getInventory().addItem(new ItemStack(Material.STONE_SWORD));
-        player.getInventory().addItem(new ItemStack(Material.STONE_AXE));
         Potion instantheal = new Potion(PotionType.INSTANT_HEAL, 2);
         player.getInventory().addItem(instantheal.toItemStack(2));
         Potion instantdamage = new Potion(PotionType.SPEED, 2);
