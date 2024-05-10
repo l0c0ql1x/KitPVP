@@ -1,4 +1,4 @@
-name: KitPVPv3
+name: KitPVP
 version: '2.0'
 main: de.locoqlix.kitpvpv3.KitPVP
 api-version: '1.20'
