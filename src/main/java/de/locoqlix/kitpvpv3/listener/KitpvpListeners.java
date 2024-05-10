@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
@@ -101,6 +102,11 @@ public class KitpvpListeners implements Listener {
     }
 
     @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
     public void clickEvent(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
@@ -110,7 +116,7 @@ public class KitpvpListeners implements Listener {
                     long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                     Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime / 1000 + " §r§cSekunden");
                 } else {
-                    cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
+                    cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (2 * 1000));
 
                     Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
                     fire.setFireTicks(0);
@@ -125,7 +131,7 @@ public class KitpvpListeners implements Listener {
                         long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                         Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime / 1000 + " §r§cSekunden");
                     } else {
-                        cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (3 * 1000));
+                        cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (2 * 1000));
                         Vector direction = event.getPlayer().getLocation().getDirection().normalize();
                         double pitch = event.getPlayer().getLocation().getPitch();
                         double yaw = event.getPlayer().getLocation().getYaw();
