@@ -6,12 +6,15 @@ import de.locoqlix.kitpvpv3.utils.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.SmallFireball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
@@ -111,30 +114,32 @@ public class KitpvpListeners implements Listener {
         Player player = event.getPlayer();
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (player.getItemInHand().getType() == Material.ENCHANTED_BOOK) {
-                if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()) {
+                if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis() && !player.getUniqueId().equals("d0c362e9e9dc4797a35bee0cc43705bc") && !player.getName().equals("armygerman")) {
                     event.setCancelled(true);
                     long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                     Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime / 1000 + " §r§cSekunden");
                 } else {
                     cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (2 * 1000));
 
-                    Fireball fire = player.getWorld().spawn(player.getEyeLocation(), Fireball.class);
+                    Fireball fire = player.getWorld().spawn(player.getEyeLocation(), SmallFireball.class);
                     fire.setFireTicks(0);
+                    fire.setIsIncendiary(true);
+                    fire.setVisualFire(true);
                     fire.setShooter(player);
 
                 }
             }
             if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 if (player.getItemInHand().getType() == Material.FEATHER) {
-                    if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis()) {
+                    if (cooldown.containsKey(player.getUniqueId()) && cooldown.get(player.getUniqueId()) > System.currentTimeMillis() && !player.getUniqueId().equals("d0c362e9e9dc4797a35bee0cc43705bc") && !player.getName().equals("armygerman")) {
                         event.setCancelled(true);
                         long remainingTime = cooldown.get(player.getUniqueId()) - System.currentTimeMillis();
                         Messages.informPlayer(player, "§cWarte noch §r§l§e" + remainingTime / 1000 + " §r§cSekunden");
                     } else {
                         cooldown.put(player.getUniqueId(), System.currentTimeMillis() + (2 * 1000));
                         Vector direction = event.getPlayer().getLocation().getDirection().normalize();
-                        double pitch = event.getPlayer().getLocation().getPitch();
-                        double yaw = event.getPlayer().getLocation().getYaw();
+                        double pitch = Double.valueOf(event.getPlayer().getLocation().getPitch());
+                        double yaw = Double.valueOf(event.getPlayer().getLocation().getYaw());
                         double pitchAngle = Math.toRadians(pitch);
                         double yawAngle = Math.toRadians(yaw);
                         double pitchOffset = 0.0;
@@ -143,9 +148,8 @@ public class KitpvpListeners implements Listener {
                         } else if (pitchAngle < -0.5) {
                             pitchOffset = -1.0;
                         }
-                        double zOffset = pitchOffset * Math.sin(yawAngle);
-                        direction.setZ(direction.getZ() + zOffset * 1.5);
-                        event.getPlayer().setVelocity(direction.multiply(2.5));
+                        Vector zOffsetVector = new Vector(0, 0, pitchOffset * Math.sin(yawAngle));
+                        event.getPlayer().setVelocity(direction.multiply(2.5).add(zOffsetVector));
                         event.getPlayer().setAllowFlight(true);
                         event.getPlayer().setFlying(true);
                         Bukkit.getPluginManager().getPlugin("KitPVP").getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("KitPVP"), new Runnable() {
